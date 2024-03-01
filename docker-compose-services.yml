@@ -1,0 +1,25 @@
+version: "3.7"
+services:
+  temperature:
+    image: docker.io/lab3/temperature
+    ports:
+      - "8080:8080"
+    networks:
+      - lab3
+  humidity:
+    image: docker.io/lab3/humidity
+    ports:
+      - "8081:8081"
+    networks:
+      - lab3
+
+  aggregator:
+    image: docker.io/lab3/aggregator
+    ports:
+      - "8082:8082"
+    networks:
+      - lab3
+
+networks:
+  lab3:
+    driver: bridge

@@ -1,0 +1,23 @@
+version: "3.7"
+services:
+  eureka:
+    image: docker.io/lab3/eureka
+    ports:
+      - "8761:8761"
+    networks:
+      lab3:
+        aliases:
+          - eureka
+  config-server:
+    image: docker.io/lab3/config-server
+    ports:
+      - "8888:8888"
+    networks:
+      lab3:
+        aliases:
+          - config
+    volumes:
+      - /home/ddrzaic/FER/RASUS/lab3/microservices/config-server-microservice/config:/config
+networks:
+  lab3:
+    driver: bridge
